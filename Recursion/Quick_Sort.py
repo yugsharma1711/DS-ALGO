@@ -30,3 +30,4 @@ def quick_sort(arr, i, j):
 lst = [6,6,5]
 quick_sort(lst, 0, len(lst)-1)
 print(lst)
+#Done
