@@ -1,15 +1,17 @@
-def power_set(arr, powerset, i):
+def power_set(arr, powerset, output, i):
     if i == len(arr):
-        return
+        powerset.append(output)
     else:
-        for j in range(len(powerset)):
-            sample_set = list(powerset[j])
-            sample_set.append(arr[i])
-            powerset.append(sample_set)
-        print(powerset)
-        power_set(arr, powerset,i+1)
+        output_cpy  = list(output)
+        power_set(arr, powerset, output_cpy, i+1)
+        output.append(arr[i])
+        output_cpy  = list(output)
+        power_set(arr, powerset, output_cpy, i+1)
 
-
-arr = [1,2,3,4]
+arr = [1,2,3,4,5]
 powerset = [[]]
-power_set(arr, powerset, 0)
+output = []
+power_set(arr, powerset,output, 0)
+powerset = powerset[1:]
+for i in powerset:
+    print(i)
