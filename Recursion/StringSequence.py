@@ -1,5 +1,3 @@
-from ctypes import pointer
-
 
 def stringSequence(str, powerset, output, i):
     if i == len(str):
