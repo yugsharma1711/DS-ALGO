@@ -1,39 +1,35 @@
-def merge_sort(arr, i, j):
-    if i == j:
+
+def merge_sort(arr, low, high):
+    if low >= high:
         return
-    else:
-        mid = i + j
-        mid = mid // 2
-        merge_sort(arr, i , mid)
-        merge_sort(arr, mid+1, j)
-        merge(arr, i, mid, j)
-
-
-def merge(arr, i, mid, j):
+    mid = (low + high) // 2
+    merge_sort(arr, low, mid)
+    merge_sort(arr, mid+1, high)
+    merge(arr, low, mid, high)
+    
+def merge(arr, low, mid, high):
+    i = low
     k = mid + 1
-    i_cpy = i
-    sortedarr = []
-    while i < mid+1 and k <= j:
+    j = high
+    sortedarr  = []
+    while i <= mid and k <= high:
         if arr[i] <= arr[k]:
             sortedarr.append(arr[i])
             i += 1
         else:
             sortedarr.append(arr[k])
             k += 1
-    while i < mid+1:
+    while i <= mid:
         sortedarr.append(arr[i])
         i += 1
-    while k <= j:
+    while k <= high:
         sortedarr.append(arr[k])
         k += 1
-    i = i_cpy
-    for lst in sortedarr:
-        arr[i] = lst
+    i = low 
+    for value in sortedarr:
+        arr[i] = value
         i += 1
-        if i > j:
-            return
 
-
-sample = [5, 1, -1, 0,3,4,2]
-merge_sort(sample, 0, len(sample)-1)
-print(sample)
+arr=  [2,4,5,1,4, -1, 0 , 3]
+merge_sort(arr, 0, len(arr)-1)
+print(arr)
