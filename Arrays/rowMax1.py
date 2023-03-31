@@ -7,6 +7,7 @@ def mostRightBS(arr, low, high, curr_index = -1):
         return mostRightBS(arr, mid+1, high, mid)
     else:
         return mostRightBS(arr, mid+1, high, curr_index)
+    
 def max1s(arr):
     mostRight = -1 
     mostRight_index = -1

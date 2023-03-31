@@ -1,3 +1,4 @@
+from collections import deque
 class Node:
     def __init__(self,data) -> None:
         self.left = None
@@ -49,7 +50,26 @@ class Node:
         if self.right:
             self.right.postorderTraversal()   
         print(self.data,end = ', ')  
-        
+    
+    def levelorderTraversal(self):
+        queue = deque()
+        queue.append(self)
+        answer = [[self.data]]
+        while len(queue) != 0:
+            level = []
+            top_element = queue[0] 
+            queue.popleft()
+            if top_element.left:
+                queue.append(top_element.left)
+                level.append(top_element.left.data)
+            if top_element.right:
+                queue.append(top_element.right)
+                level.append(top_element.right.data)
+            answer.append(level)
+        print(answer)
+            
+            
+                
 root = Node(27)
 root.insert(14)
 root.insert(35)
@@ -66,3 +86,6 @@ root.preorderTraversal()
 print()
 print('Postorder')
 root.postorderTraversal()
+print()
+print('Level Order')
+root.levelorderTraversal()
